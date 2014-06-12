@@ -264,13 +264,14 @@ cli.parse({
 });
 
 cli.main(function (args, options) {
-    if (args.length !== 2) {
-        cli.fatal('Wrong number of arguments. Must be exactly 2 arguments! See `' + cli.app + ' -h` for details');
-    }
+    //if (args.length !== 2) {
+    //    cli.fatal('Wrong number of arguments. Must be exactly 2 arguments! See `' + cli.app + ' -h` for details');
+    //}
 
     var connections;
 
     if (options.connectionsList) {
+        //console.log("in here...");
         connections = options.connectionsList.split(',');
 
         multipleTest(args[0], args[1], connections, cli, function (result) {

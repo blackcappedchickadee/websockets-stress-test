@@ -8,6 +8,27 @@ exports.init = function (ws, api) {
     ws.on('message', function (message) {
         api.checkpoint('> ' + message);
 
+        var testMessage = {
+            message: '',
+            sessionId: '',
+            callId: '1000000000',
+            did: '2070000000',
+            extension: '11111',
+            messageDate: '9999-99-99'
+        };
+
+
+        //loop 10 times
+        var stopConnection = false;
+        for(var i = 0; i < 10; i++) {
+            var testMessageJson = JSON.stringify(testMessage);
+            //api.checkpoint('>>>> sending testMessageJson = ' + testMessageJson);
+            ws.send(testMessageJson);
+        }
+
+        ws.close();
+
+        /*
         message = message.split(':');
 
         if (message[0] === 'pong') {
@@ -19,7 +40,8 @@ exports.init = function (ws, api) {
         } else if (message[0] === 'concat3') {
             ws.close();
         }
+        */
     });
 
-    ws.send('ping');
+    //ws.send('ping');
 };
